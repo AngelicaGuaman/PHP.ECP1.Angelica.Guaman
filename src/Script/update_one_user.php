@@ -52,7 +52,7 @@ foreach ($argv as $k => $v) {
 try {
     $entityManager->persist($user);
     $entityManager->flush();
-    echo 'Se ha actualizado el usuario ' . $user->getUsername() . 'con ID ' . $user->getId() . PHP_EOL;
+    echo 'Se ha actualizado el usuario ' . $user->getUsername() . ' con ID ' . $user->getId() . PHP_EOL;
 } catch (Exception $exception) {
     echo $exception->getMessage() . PHP_EOL;
 }
