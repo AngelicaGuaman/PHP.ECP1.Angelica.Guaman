@@ -14,7 +14,7 @@ $dotenv->load();
 
 $entityManager = Utils::getEntityManager();
 
-if ($argc !== 2) {
+if ($argc < 2 || $argc > 3) {
     $fich = basename(__FILE__);
     echo <<< MARCA_FIN
 
@@ -29,11 +29,21 @@ $userId = (int)$argv[1];
 $userRepository = $entityManager->getRepository(User::Class);
 $user = $userRepository->findOneBy(['id' => $userId]);
 
+
 if ($user === null) {
     echo 'El usuario con ID ' . $userId . ' no se ha encontrado' . PHP_EOL;
     exit(0);
+}
+
+if (in_array('--json', $argv, true)) {
+    echo json_encode($user, JSON_PRETTY_PRINT) . PHP_EOL;
 } else {
-    $entityManager->remove($user);
-    $entityManager->flush();
-    echo 'El usuario con ID ' . $userId . ' se ha eliminado' . PHP_EOL;
+    echo PHP_EOL
+        . sprintf('%3s - %30s - %30s - %30s - %30s', 'Id', 'Nombre de usuario', 'Email',
+            'Is Enabled ?', 'Is Admin ?')
+        . PHP_EOL;
+    echo PHP_EOL
+        . sprintf('%3s - %30s - %30s - %30s - %30s', $user->getId(), $user->getUsername(), $user->getEmail(),
+            ($user->isEnabled() ? 'true' : 'false'), ($user->isAdmin() ? 'true' : 'false'))
+        . PHP_EOL;
 }
