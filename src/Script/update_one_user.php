@@ -14,7 +14,7 @@ $dotenv->load();
 
 $entityManager = Utils::getEntityManager();
 
-if ($argc < 2 || $argc > 6) {
+if ($argc < 2 || $argc > 7) {
     $fich = basename(__FILE__);
     echo <<< MARCA_FIN
 
@@ -52,6 +52,11 @@ foreach ($argv as $k => $v) {
 try {
     $entityManager->persist($user);
     $entityManager->flush();
+
+    if (in_array('--json', $argv, true)) {
+        echo json_encode($user, JSON_PRETTY_PRINT) . PHP_EOL;
+    }
+
     echo 'Se ha actualizado el usuario ' . $user->getUsername() . ' con ID ' . $user->getId() . PHP_EOL;
 } catch (Exception $exception) {
     echo $exception->getMessage() . PHP_EOL;
