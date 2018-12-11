@@ -15,7 +15,7 @@ $dotenv->load();
 
 $entityManager = Utils::getEntityManager();
 
-if ($argc !== 4) {
+if ($argc < 4 || $argc > 5) {
     $fich = basename(__FILE__);
     echo <<< MARCA_FIN
 
@@ -54,6 +54,11 @@ $result->setResult($score);
 try {
     $entityManager->persist($result);
     $entityManager->flush();
+
+    if (in_array('--json', $argv, true)) {
+        echo json_encode($result, JSON_PRETTY_PRINT) . PHP_EOL;
+    }
+
     echo 'Se ha actualizado el resultado con ID ' . $result->getId() . ' y usuario ' . $user->getUsername() . PHP_EOL;
 } catch (Exception $exception) {
     echo $exception->getMessage() . PHP_EOL;
