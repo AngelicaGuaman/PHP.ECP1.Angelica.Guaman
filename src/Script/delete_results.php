@@ -14,7 +14,7 @@ $dotenv->load();
 
 $entityManager = Utils::getEntityManager();
 
-if ($argc > 1) {
+if ($argc > 2) {
     $fich = basename(__FILE__);
     echo <<< MARCA_FIN
 
@@ -33,6 +33,10 @@ if (empty($results)) {
     foreach ($results as $result) {
         $entityManager->remove($result);
         $entityManager->flush();
+    }
+
+    if (in_array('--json', $argv, true)) {
+        echo json_encode($results, JSON_PRETTY_PRINT) . PHP_EOL;
     }
 
     echo 'Se han eliminado todos los resultados' . PHP_EOL;
