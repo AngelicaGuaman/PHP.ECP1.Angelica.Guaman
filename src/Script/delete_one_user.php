@@ -14,7 +14,7 @@ $dotenv->load();
 
 $entityManager = Utils::getEntityManager();
 
-if ($argc !== 2) {
+if ($argc < 2 || $argc > 3) {
     $fich = basename(__FILE__);
     echo <<< MARCA_FIN
 
@@ -35,5 +35,10 @@ if ($user === null) {
 } else {
     $entityManager->remove($user);
     $entityManager->flush();
+
+    if (in_array('--json', $argv, true)) {
+        echo json_encode($user, JSON_PRETTY_PRINT) . PHP_EOL;
+    }
+
     echo 'El usuario con ID ' . $userId . ' se ha eliminado' . PHP_EOL;
 }
