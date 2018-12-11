@@ -110,8 +110,8 @@ class ResultTest extends \PHPUnit\Framework\TestCase
     public function testUser(): void
     {
         $newUser = new User();
-        $this->result->setResult($newUser);
-        self::assertEquals($newUser, $this->result->getResult());
+        $this->result->setUser($newUser);
+        self::assertEquals($newUser, $this->result->getUser());
     }
 
     /**
@@ -123,9 +123,9 @@ class ResultTest extends \PHPUnit\Framework\TestCase
      */
     public function testTime(): void
     {
-        $date = new DateTime('05/03/1990');
+        $date = new \DateTime('05/03/1990');
         $this->result->setTime($date);
-        self::assertEquals('05/03/1990 00:00:00', $this->result->getTime());
+        self::assertEquals($date, $this->result->getTime());
     }
 
     /**
