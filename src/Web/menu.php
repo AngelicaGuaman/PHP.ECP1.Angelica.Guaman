@@ -27,7 +27,7 @@
                 </a></li>
             <li id="panelServicios" class="nav-item"><a class="nav-link <?php if($section === 'panelServicios') echo active?>" href="panelServicios.php">Servicios</a></li>
             <li id="panelInstalaciones" class="nav-item"><a class="nav-link <?php if($section === 'panelInstalaciones') echo active?>" href="panelInstalaciones.php">Instalaciones</a></li>
-            <li id="panelAdministracion" class="nav-item"><a class="nav-link <?php if($section === 'panelAdministracion') echo active?>"" href="panelAdministracion.php">Administración</a></li>
+            <li id="panelAdministracion" class="nav-item"><a class="nav-link <?php if($section === 'panelAdministracion') echo active?>" href="panelAdministracion.php">Administración</a></li>
         </ul>
     </div>
 </nav>
