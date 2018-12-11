@@ -115,7 +115,7 @@ class UserTest extends TestCase
      */
     public function testToString(): void
     {
-        self::assertEquals('angie', $this->user->__toString());
+        self::assertEquals('angelica', $this->user->__toString());
     }
 
     /**
