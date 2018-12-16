@@ -14,16 +14,11 @@ $dotenv->load();
 
 $entityManager = Utils::getEntityManager();
 
-$resultId = (int)$argv[1];
+$resultId = (int)$_GET['resultId'];
 
 $resultRepository = $entityManager->getRepository(Result::Class);
 $result = $resultRepository->findOneBy(['id' => $resultId]);
 
-if (null === $result) {
-    echo 'El resultado con ID ' . $resultId . ' no se ha encontrado' . PHP_EOL;
-    exit(0);
-} else {
-    $entityManager->remove($result);
-    $entityManager->flush();
-    echo 'El resultado con ID ' . $resultadoId . ' se ha eliminado' . PHP_EOL;
-}
+$entityManager->remove($result);
+$entityManager->flush();
+echo 'El resultado con ID ' . $resultadoId . ' se ha eliminado' . PHP_EOL;

@@ -15,13 +15,26 @@ $dotenv->load();
 $entityManager = Utils::getEntityManager();
 
 $userRepository = $entityManager->getRepository(User::Class);
+
+$userId = $_GET['userId'];
+
 $user = $userRepository->findOneBy(['id' => $userId]);
 
-if ($user === null) {
-    echo 'Usuario $userId no encontrado ' . PHP_EOL;
-    exit(0);
-}
+$username = $_POST['username'];
+$email = $_POST['email'];
+$psw = $_POST['psw'];
+$enabled = $_POST['enabled'];
 
+$isEnabled = $enabled === 'true' ? true : false;
+
+echo $enabled;
+
+$user->setUsername($username);
+$user->setEmail($email);
+$user->setPassword($psw);
+$user->setEnabled($isEnabled);
+
+$entityManager = Utils::getEntityManager();
 
 try {
     $entityManager->persist($user);
@@ -30,3 +43,4 @@ try {
 } catch (Exception $exception) {
     echo $exception->getMessage() . PHP_EOL;
 }
+

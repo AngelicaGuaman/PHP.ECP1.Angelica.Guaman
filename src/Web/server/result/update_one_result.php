@@ -4,39 +4,28 @@ use MiW\Results\Entity\Result;
 use MiW\Results\Entity\User;
 use MiW\Results\Utils;
 
-require __DIR__ . '/../../vendor/autoload.php';
+require __DIR__ . '/../../../../vendor/autoload.php';
 
 // Carga las variables de entorno
 $dotenv = new \Dotenv\Dotenv(
-    __DIR__ . '/../..',
-    Utils::getEnvFileName(__DIR__ . '/../..')
+    __DIR__ . '/../../../..',
+    Utils::getEnvFileName(__DIR__ . '/../../../..')
 );
 $dotenv->load();
 
 $entityManager = Utils::getEntityManager();
 
-if ($argc !== 4) {
-    $fich = basename(__FILE__);
-    echo <<< MARCA_FIN
-
-    Usage: $fich <ResultadoId> <UserId> <Result>
-
-MARCA_FIN;
-    exit(0);
-}
-
-$resultId = (int)$argv[1];
+$resultId = (int) $_POST['resultid'];
 
 $resultRepository = $entityManager->getRepository(Result::Class);
 $result = $resultRepository->findOneBy(['id' => $resultId]);
 
 if ($result === null) {
-    echo 'Resultado con ID $resultadoId no encontrado ' . PHP_EOL;
+    echo "Resultado con ID $resultadoId no encontrado " . PHP_EOL;
     exit(0);
 }
 
-
-$userId = (int)$argv[2];
+$userId = (int) $_POST['userId'];
 
 $userRepository = $entityManager->getRepository(User::Class);
 $user = $userRepository->findOneBy(['id' => $userId]);

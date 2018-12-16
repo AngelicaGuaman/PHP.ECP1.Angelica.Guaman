@@ -21,6 +21,10 @@
     padding: 20px;
 }
 
+.table {
+    padding: 20px;
+}
+
 .img-background{
     background-image: url(../img/img-background.jpeg);
     background-size: cover;
@@ -55,6 +59,12 @@
 .icons{
     color: #1fce6d;
     font-size: 32px;
+    float: left;
+}
+
+.icons-table{
+    color: #1fce6d;
+    font-size: 22px;
     float: left;
 }
 

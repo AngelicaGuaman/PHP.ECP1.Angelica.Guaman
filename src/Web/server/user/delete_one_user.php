@@ -3,28 +3,18 @@
 use MiW\Results\Entity\User;
 use MiW\Results\Utils;
 
-require __DIR__ . '/../../vendor/autoload.php';
+require __DIR__ . '/../../../../vendor/autoload.php';
 
 // Carga las variables de entorno
 $dotenv = new \Dotenv\Dotenv(
-    __DIR__ . '/../..',
-    Utils::getEnvFileName(__DIR__ . '/../..')
+    __DIR__ . '/../../../..',
+    Utils::getEnvFileName(__DIR__ . '/../../../..')
 );
 $dotenv->load();
 
 $entityManager = Utils::getEntityManager();
 
-if ($argc !== 2) {
-    $fich = basename(__FILE__);
-    echo <<< MARCA_FIN
-
-    Usage: $fich <UserId>
-
-MARCA_FIN;
-    exit(0);
-}
-
-$userId = (int)$argv[1];
+$userId = (int) $_GET['userId'];
 
 $userRepository = $entityManager->getRepository(User::Class);
 $user = $userRepository->findOneBy(['id' => $userId]);

@@ -10,6 +10,7 @@
  */
 
 use MiW\Results\Entity\User;
+use MiW\Results\Entity\Result;
 use MiW\Results\Utils;
 
 require __DIR__ . '/../../../../vendor/autoload.php';
@@ -25,3 +26,6 @@ $entityManager = Utils::getEntityManager();
 
 $userRepository = $entityManager->getRepository(User::class);
 $users = $userRepository->findAll();
+
+$resultsRepository = $entityManager->getRepository(Result::class);
+$results = $resultsRepository->findAll();
