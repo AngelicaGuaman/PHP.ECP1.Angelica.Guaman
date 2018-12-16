@@ -2,7 +2,7 @@
 
 <div id="panel" class="container">
     <div class="border">
-        <h2>Editar Usuario</h2>
+        <h2>Crear Usuario</h2>
         <div>
             <form action="./server/user/create_one_user.php" method="POST">
                 <div class="form-group">
@@ -33,3 +33,7 @@
 
     </div>
 </div>
+
+<?php require 'footer.php' ?>
+</body>
+</html>

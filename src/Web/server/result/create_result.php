@@ -14,30 +14,20 @@ use MiW\Results\Entity\Result;
 use MiW\Results\Entity\User;
 use MiW\Results\Utils;
 
-require __DIR__ . '/../../vendor/autoload.php';
+require __DIR__ . '/../../../../vendor/autoload.php';
 
 // Carga las variables de entorno
 $dotenv = new \Dotenv\Dotenv(
-    __DIR__ . '/../..',
-    Utils::getEnvFileName(__DIR__ . '/../..')
+    __DIR__ . '/../../../..',
+    Utils::getEnvFileName(__DIR__ . '/../../../..')
 );
 $dotenv->load();
 
 $entityManager = Utils::getEntityManager();
 
-if ($argc < 3 || $argc > 4) {
-    $fich = basename(__FILE__);
-    echo <<< MARCA_FIN
-
-    Usage: $fich <Result> <UserId> [<Timestamp>]
-
-MARCA_FIN;
-    exit(0);
-}
-
-$newResult    = (int) $argv[1];
-$userId       = (int) $argv[2];
-$newTimestamp = $argv[3] ?? new DateTime('now');
+$newResult    = (int) $_POST['points'];
+$userId       = (int) $_POST['userId'];
+$newTimestamp = $_POST['time'] ? new DateTime($_POST['time']) :  new DateTime('now');
 
 /** @var User $user */
 $user = $entityManager

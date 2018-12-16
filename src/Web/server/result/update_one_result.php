@@ -20,15 +20,10 @@ $resultId = (int)$_GET['resultId'];
 $resultRepository = $entityManager->getRepository(Result::Class);
 $result = $resultRepository->findOneBy(['id' => $resultId]);
 
-$userId = (int)$_POST['userId'];
+$userId = $_POST['userId'];
 
 $userRepository = $entityManager->getRepository(User::Class);
 $user = $userRepository->findOneBy(['id' => $userId]);
-
-if ($user === null) {
-    echo 'Usuario con ID $userId no encontrado ' . PHP_EOL;
-    exit(0);
-}
 
 $score = $_POST['points'];
 

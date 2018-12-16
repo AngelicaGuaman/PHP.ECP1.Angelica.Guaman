@@ -57,3 +57,7 @@ $user = $userRepository->findOneBy(['id' => $userId]);
 
     </div>
 </div>
+
+<?php require 'footer.php' ?>
+</body>
+</html>

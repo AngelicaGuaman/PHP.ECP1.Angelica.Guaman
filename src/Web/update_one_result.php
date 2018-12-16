@@ -1,3 +1,4 @@
+<?php require 'menu.php' ?>
 <?php require './server/user/list_users.php' ?>
 <?php require './server/result/list_results.php' ?>
 
@@ -35,3 +36,7 @@
     </div>
 
 </div>
+
+<?php require 'footer.php' ?>
+</body>
+</html>

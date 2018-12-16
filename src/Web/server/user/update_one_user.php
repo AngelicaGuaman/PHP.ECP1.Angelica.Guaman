@@ -29,6 +29,7 @@ $isEnabled = $enabled === 'true' ? true : false;
 
 echo $enabled;
 
+$user->setId($userId);
 $user->setUsername($username);
 $user->setEmail($email);
 $user->setPassword($psw);
