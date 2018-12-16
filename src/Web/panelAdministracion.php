@@ -56,7 +56,8 @@
                         <th>Username</th>
                         <th>Points</th>
                         <th></th>
-                        <th></th>
+                        <th><a href="create_one_result.php"><span
+                                        class="icons-table fa fa-plus"></span></a></th>
                     </tr>
                     </thead>
                     <tbody>
@@ -65,7 +66,7 @@
                             <th> <?php echo $result->getId() ?></th>
                             <th> <?php echo $result->getUser()->getUsername() ?></th>
                             <th> <?php echo $result->getResult() ?></th>
-                            <th><a href="./server/result/update_one_result.php?resultId=<?php echo $result->getId() ?>"><span
+                            <th><a href="update_one_result.php?resultId=<?php echo $result->getId() ?>"><span
                                             class="icons-table fa fa-edit"></span></a></th>
                             <th>
                                 <a href="./server/result/delete_one_result.php?resultId=<?php echo $result->getId() ?>"

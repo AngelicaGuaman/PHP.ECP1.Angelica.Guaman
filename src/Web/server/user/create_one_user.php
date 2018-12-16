@@ -21,9 +21,8 @@ $email = $_POST['email'];
 $psw = $_POST['psw'];
 $enabled = $_POST['enabled'];
 
-$isEnabled = $enabled === 'true' ? true : false;
+$isEnabled = $enabled === '1' ? true : false;
 
-echo $enabled;
 
 $user = new User();
 

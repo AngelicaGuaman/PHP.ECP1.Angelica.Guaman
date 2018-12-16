@@ -15,17 +15,12 @@ $dotenv->load();
 
 $entityManager = Utils::getEntityManager();
 
-$resultId = (int) $_POST['resultid'];
+$resultId = (int)$_GET['resultId'];
 
 $resultRepository = $entityManager->getRepository(Result::Class);
 $result = $resultRepository->findOneBy(['id' => $resultId]);
 
-if ($result === null) {
-    echo "Resultado con ID $resultadoId no encontrado " . PHP_EOL;
-    exit(0);
-}
-
-$userId = (int) $_POST['userId'];
+$userId = (int)$_POST['userId'];
 
 $userRepository = $entityManager->getRepository(User::Class);
 $user = $userRepository->findOneBy(['id' => $userId]);
@@ -35,7 +30,7 @@ if ($user === null) {
     exit(0);
 }
 
-$score = (int)$argv[3];
+$score = $_POST['points'];
 
 $result->setUser($user);
 $result->setResult($score);

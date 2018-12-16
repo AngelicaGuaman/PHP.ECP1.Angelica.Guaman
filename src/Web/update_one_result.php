@@ -1,5 +1,5 @@
 <?php require './server/user/list_users.php' ?>
-<?php require './server/user/list_results.php' ?>
+<?php require './server/result/list_results.php' ?>
 
 <div>
     <h2>Crear Resultados</h2>
@@ -17,14 +17,14 @@
                 <label for="username">Username:</label>
                 <select name="userId" id="userId" class="form-control">
                     <?php foreach ($users as $user) { ?>
-                        <option <?php if ($user->getId() === $result->getUser()->getId()) print 'selected' ?>
+                        <option <?php if ($user->getId() === $result->getUser()->getId()) echo 'selected' ?>
                                 value="<?php echo $user->getId() ?>"><?php echo $user->getUsername() ?></option>
                     <?php } ?>
                 </select>
             </div>
             <div class="form-group">
                 <label for="points">Points:</label>
-                <input type="number" class="form-control" id="points" value="<?php echo $result->getResults(); ?>">
+                <input type="number" class="form-control" id="points" name="points" value="<?php echo $result->getResults(); ?>">
             </div>
 
             <div>
